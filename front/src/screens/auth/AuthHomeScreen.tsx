@@ -2,8 +2,8 @@ import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Button, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {AuthStackParamList} from '../navigations/stack/AuthStackNavigator';
-import {authNavigations} from '../constans';
+import {AuthStackParamList} from '../../navigations/stack/AuthStackNavigator';
+import {authNavigations} from '../../constans';
 
 type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
@@ -17,6 +17,10 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
         <Button
           title="로그인화면으로 이동"
           onPress={() => navigation.navigate(authNavigations.LOGIN)}
+        />
+        <Button
+          title="회원가입으로 이동"
+          onPress={() => navigation.navigate(authNavigations.SIGNUP)}
         />
       </View>
     </SafeAreaView>
