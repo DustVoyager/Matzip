@@ -22,7 +22,6 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
         <CustomButton
           label="회원가입하기"
           variant="outlined"
-          inValid
           onPress={() => navigation.navigate(authNavigations.SIGNUP)}
         />
       </View>
