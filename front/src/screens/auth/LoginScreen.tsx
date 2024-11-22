@@ -1,10 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import InputField from '../../components/InputField';
 
 function LoginScreen() {
   return (
     <View>
-      <Text>로그인 스크린</Text>
+      <InputField />
     </View>
   );
 }
