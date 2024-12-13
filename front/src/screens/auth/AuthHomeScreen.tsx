@@ -1,10 +1,10 @@
 import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
-import {Dimensions, Image, StyleSheet, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {Dimensions, Image, SafeAreaView, StyleSheet, View} from 'react-native';
+
 import {AuthStackParamList} from '@/navigations/stack/AuthStackNavigator';
-import {authNavigations} from '@/constans';
 import CustomButton from '@/components/CustomButton';
+import {authNavigations} from '@/constans';
 
 type AuthHomeScreenProps = StackScreenProps<
   AuthStackParamList,
@@ -18,7 +18,7 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
         <Image
           resizeMode="contain"
           style={styles.image}
-          source={require('../../assets/matzip.png')}
+          source={require('@/assets/matzip.png')}
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -39,8 +39,9 @@ function AuthHomeScreen({navigation}: AuthHomeScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 30,
     alignItems: 'center',
+    marginHorizontal: 30,
+    marginVertical: 30,
   },
   imageContainer: {
     flex: 1.5,
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+    alignItems: 'center',
     gap: 10,
   },
 });
