@@ -3,9 +3,21 @@ import React from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 
-function MapHomeScreen({navigation}: any) {
+type Naviation = CompositeNavigationProp<
+  StackNavigationProp<MapStackParamList>,
+  DrawerNavigationProp<MainDrawerParamList>
+>;
+
+function MapHomeScreen() {
   const inset = useSafeAreaInsets();
+  const navigation = useNavigation<Naviation>();
+
   return (
     <>
       <MapView

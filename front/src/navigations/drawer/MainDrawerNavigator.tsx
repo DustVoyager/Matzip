@@ -3,8 +3,15 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import FeedHomeScreen from '@/screens/feed/FeedHomeScreen';
 import CalendarHomeScreen from '@/screens/calendar/CalendarHomeScreen';
 import MapStackNavigator from '../stack/MapStackNavigator';
+import {mainNavigations} from '@/constans';
 
-const Drawer = createDrawerNavigator();
+export type MainDrawerParamList = {
+  [mainNavigations.HOME]: undefined;
+  [mainNavigations.FEED]: undefined;
+  [mainNavigations.CALENDAR]: undefined;
+};
+
+const Drawer = createDrawerNavigator<MainDrawerParamList>();
 
 function MainDrawerNavigator() {
   return (
@@ -14,21 +21,21 @@ function MainDrawerNavigator() {
         headerShown: false,
       }}>
       <Drawer.Screen
-        name="MapHome"
+        name={mainNavigations.HOME}
         component={MapStackNavigator}
         options={{
           title: '홈',
         }}
       />
       <Drawer.Screen
-        name="FeedHome"
+        name={mainNavigations.FEED}
         component={FeedHomeScreen}
         options={{
           title: '피드',
         }}
       />
       <Drawer.Screen
-        name="CalendarHome"
+        name={mainNavigations.CALENDAR}
         component={CalendarHomeScreen}
         options={{
           title: '캘린더',
