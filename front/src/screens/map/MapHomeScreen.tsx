@@ -1,13 +1,14 @@
 import {colors} from '@/constans';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {LatLng, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
+import Geolocation from '@react-native-community/geolocation';
 
 type Naviation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -17,6 +18,14 @@ type Naviation = CompositeNavigationProp<
 function MapHomeScreen() {
   const inset = useSafeAreaInsets();
   const navigation = useNavigation<Naviation>();
+  const [userLocation, setUserLocation] = useState<LatLng>();
+
+  useEffect(() => {
+    Geolocation.getCurrentPosition(info => {
+      const {latitude, longitude} = info.coords;
+      setUserLocation({latitude, longitude});
+    });
+  }, []);
 
   return (
     <>

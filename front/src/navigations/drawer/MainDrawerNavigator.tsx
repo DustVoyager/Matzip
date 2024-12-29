@@ -2,11 +2,12 @@ import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import FeedHomeScreen from '@/screens/feed/FeedHomeScreen';
 import CalendarHomeScreen from '@/screens/calendar/CalendarHomeScreen';
-import MapStackNavigator from '../stack/MapStackNavigator';
+import MapStackNavigator, {MapStackParamList} from '../stack/MapStackNavigator';
 import {mainNavigations} from '@/constans';
+import {NavigatorScreenParams} from '@react-navigation/native';
 
 export type MainDrawerParamList = {
-  [mainNavigations.HOME]: undefined;
+  [mainNavigations.HOME]: NavigatorScreenParams<MapStackParamList>;
   [mainNavigations.FEED]: undefined;
   [mainNavigations.CALENDAR]: undefined;
 };
