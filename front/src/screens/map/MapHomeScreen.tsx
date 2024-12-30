@@ -1,6 +1,6 @@
 import {colors} from '@/constans';
-import React, {useEffect, useState} from 'react';
-import {Pressable, StyleSheet, Text} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import MapView, {LatLng, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
@@ -18,18 +18,45 @@ type Naviation = CompositeNavigationProp<
 function MapHomeScreen() {
   const inset = useSafeAreaInsets();
   const navigation = useNavigation<Naviation>();
-  const [userLocation, setUserLocation] = useState<LatLng>();
+  const [userLocation, setUserLocation] = useState<LatLng>({
+    latitude: 37.5516032365118,
+    longitude: 126.98989626020192,
+  });
+  const [isUserLocationError, setIsUserLocationError] = useState(false);
+  const mapRef = useRef<MapView | null>(null);
+
+  const handlePressUserLocation = () => {
+    if (isUserLocationError) {
+      return;
+    }
+    mapRef.current?.animateToRegion({
+      latitude: userLocation.latitude,
+      longitude: userLocation.longitude,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    });
+  };
 
   useEffect(() => {
-    Geolocation.getCurrentPosition(info => {
-      const {latitude, longitude} = info.coords;
-      setUserLocation({latitude, longitude});
-    });
+    Geolocation.getCurrentPosition(
+      info => {
+        const {latitude, longitude} = info.coords;
+        setUserLocation({latitude, longitude});
+        setIsUserLocationError(false);
+      },
+      () => {
+        setIsUserLocationError(true);
+      },
+      {
+        enableHighAccuracy: true,
+      },
+    );
   }, []);
 
   return (
     <>
       <MapView
+        ref={mapRef}
         style={styles.container}
         provider={PROVIDER_GOOGLE}
         showsUserLocation
@@ -41,6 +68,11 @@ function MapHomeScreen() {
         onPress={() => navigation.openDrawer()}>
         <Text>서랍</Text>
       </Pressable>
+      <View style={styles.buttonList}>
+        <Pressable style={styles.mapButton} onPress={handlePressUserLocation}>
+          <Text>내위치</Text>
+        </Pressable>
+      </View>
     </>
   );
 }
@@ -61,6 +93,24 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 1, height: 1},
     shadowOpacity: 0.5,
     elevation: 4,
+  },
+  buttonList: {
+    position: 'absolute',
+    bottom: 30,
+    right: 15,
+  },
+  mapButton: {
+    backgroundColor: colors.PINK_700,
+    marginVertical: 5,
+    height: 48,
+    width: 48,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 30,
+    shadowColor: colors.BLACK,
+    shadowOffset: {width: 1, height: 2},
+    shadowOpacity: 0.5,
+    elevation: 2,
   },
 });
 
