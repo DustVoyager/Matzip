@@ -1,14 +1,14 @@
 import {colors} from '@/constans';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import MapView, {LatLng, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {MapStackParamList} from '@/navigations/stack/MapStackNavigator';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
-import Geolocation from '@react-native-community/geolocation';
+import useUserLocation from '@/hooks/useUserLocation';
 
 type Naviation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -18,17 +18,15 @@ type Naviation = CompositeNavigationProp<
 function MapHomeScreen() {
   const inset = useSafeAreaInsets();
   const navigation = useNavigation<Naviation>();
-  const [userLocation, setUserLocation] = useState<LatLng>({
-    latitude: 37.5516032365118,
-    longitude: 126.98989626020192,
-  });
-  const [isUserLocationError, setIsUserLocationError] = useState(false);
   const mapRef = useRef<MapView | null>(null);
+  const {userLocation, isUserLocationError} = useUserLocation();
 
   const handlePressUserLocation = () => {
     if (isUserLocationError) {
+      // 에러메세지를 표시하기
       return;
     }
+
     mapRef.current?.animateToRegion({
       latitude: userLocation.latitude,
       longitude: userLocation.longitude,
@@ -36,22 +34,6 @@ function MapHomeScreen() {
       longitudeDelta: 0.0421,
     });
   };
-
-  useEffect(() => {
-    Geolocation.getCurrentPosition(
-      info => {
-        const {latitude, longitude} = info.coords;
-        setUserLocation({latitude, longitude});
-        setIsUserLocationError(false);
-      },
-      () => {
-        setIsUserLocationError(true);
-      },
-      {
-        enableHighAccuracy: true,
-      },
-    );
-  }, []);
 
   return (
     <>
