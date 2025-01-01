@@ -19,3 +19,9 @@ buildscript {
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
 }
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'Ionicons.ttf', 'Octicons.ttf' ] 
+]
+
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")

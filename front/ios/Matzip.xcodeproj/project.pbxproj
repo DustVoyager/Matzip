@@ -14,9 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Matzip-MatzipTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Matzip-MatzipTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		EF439EA92D257B3500DA0FC6 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EA82D257B3500DA0FC6 /* Ionicons.ttf */; };
-		EF439EAB2D257B3D00DA0FC6 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EAA2D257B3D00DA0FC6 /* MaterialIcons.ttf */; };
-		EF439EAD2D257B4300DA0FC6 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EAC2D257B4300DA0FC6 /* Octicons.ttf */; };
+		EF439EB52D257FE000DA0FC6 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EB42D257FE000DA0FC6 /* Octicons.ttf */; };
+		EF439EB62D257FE000DA0FC6 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EB32D257FE000DA0FC6 /* MaterialIcons.ttf */; };
+		EF439EB72D257FE000DA0FC6 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF439EB22D257FE000DA0FC6 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +47,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Matzip/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Matzip-MatzipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Matzip-MatzipTests.release.xcconfig"; path = "Target Support Files/Pods-Matzip-MatzipTests/Pods-Matzip-MatzipTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EF439EA82D257B3500DA0FC6 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
-		EF439EAA2D257B3D00DA0FC6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		EF439EAC2D257B4300DA0FC6 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
+		EF439EB22D257FE000DA0FC6 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
+		EF439EB32D257FE000DA0FC6 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		EF439EB42D257FE000DA0FC6 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 		13B07FAE1A68108700A75B9A /* Matzip */ = {
 			isa = PBXGroup;
 			children = (
-				EF439EA72D25793000DA0FC6 /* Fonts */,
+				EF439EB12D257EE500DA0FC6 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -155,12 +155,12 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EF439EA72D25793000DA0FC6 /* Fonts */ = {
+		EF439EB12D257EE500DA0FC6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EF439EA82D257B3500DA0FC6 /* Ionicons.ttf */,
-				EF439EAA2D257B3D00DA0FC6 /* MaterialIcons.ttf */,
-				EF439EAC2D257B4300DA0FC6 /* Octicons.ttf */,
+				EF439EB22D257FE000DA0FC6 /* Ionicons.ttf */,
+				EF439EB32D257FE000DA0FC6 /* MaterialIcons.ttf */,
+				EF439EB42D257FE000DA0FC6 /* Octicons.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -259,11 +259,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF439EAD2D257B4300DA0FC6 /* Octicons.ttf in Resources */,
-				EF439EAB2D257B3D00DA0FC6 /* MaterialIcons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				EF439EA92D257B3500DA0FC6 /* Ionicons.ttf in Resources */,
+				EF439EB52D257FE000DA0FC6 /* Octicons.ttf in Resources */,
+				EF439EB62D257FE000DA0FC6 /* MaterialIcons.ttf in Resources */,
+				EF439EB72D257FE000DA0FC6 /* Ionicons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
