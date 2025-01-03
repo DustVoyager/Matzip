@@ -11,7 +11,7 @@ function usePermission() {
           : PERMISSIONS.IOS.LOCATION_WHEN_IN_USE;
 
       const checked = await check(permissonOS);
-      console.log(checked);
+      console.log('checked', checked);
     })();
   }, []);
 }
