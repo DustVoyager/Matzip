@@ -7,6 +7,7 @@ import {colors, mainNavigations} from '@/constans';
 import {NavigatorScreenParams, RouteProp} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Dimensions} from 'react-native';
+import CustomDrawerContent from './CustomDrawerContent';
 
 export type MainDrawerParamList = {
   [mainNavigations.HOME]: NavigatorScreenParams<MapStackParamList>;
@@ -48,6 +49,7 @@ function DrawerIcons(route: RouteProp<MainDrawerParamList>, focused: boolean) {
 function MainDrawerNavigator() {
   return (
     <Drawer.Navigator
+      drawerContent={CustomDrawerContent}
       screenOptions={({route}) => ({
         drawerType: 'front',
         headerShown: false,
@@ -62,6 +64,7 @@ function MainDrawerNavigator() {
         drawerLabelStyle: {
           fontWeight: '600',
         },
+        ㄹ
         drawerIcon: ({focused}) => DrawerIcons(route, focused),
       })}>
       <Drawer.Screen
