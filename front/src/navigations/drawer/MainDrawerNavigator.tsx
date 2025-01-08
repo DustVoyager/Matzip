@@ -64,7 +64,6 @@ function MainDrawerNavigator() {
         drawerLabelStyle: {
           fontWeight: '600',
         },
-        ㄹ
         drawerIcon: ({focused}) => DrawerIcons(route, focused),
       })}>
       <Drawer.Screen
