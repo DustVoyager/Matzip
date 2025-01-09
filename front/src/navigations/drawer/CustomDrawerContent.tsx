@@ -1,10 +1,11 @@
+import React from 'react';
 import {colors} from '@/constans';
 import useAuth from '@/hooks/queries/useAuth';
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import {SafeAreaView} from 'react-native';
+import {Image, SafeAreaView} from 'react-native';
 import {StyleSheet, Text, View} from 'react-native';
 
 function CustomDrawerContent(props: DrawerContentComponentProps) {
@@ -17,6 +18,20 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         scrollEnabled={false}
         contentContainerStyle={styles.contentContainer}>
         <View style={styles.userInfoContainer}>
+          <View style={styles.userImageContainer}>
+            {imageUri === null && kakaoImageUri === null && (
+              <Image
+                source={require('@/assets/user-default.png')}
+                style={styles.userImage}
+              />
+            )}
+            {imageUri === null && !!kakaoImageUri && (
+              <Image source={{uri: kakaoImageUri}} style={styles.userImage} />
+            )}
+            {imageUri !== null && (
+              <Image source={{uri: imageUri}} style={styles.userImage} />
+            )}
+          </View>
           <Text style={styles.nameText}>{nickname || email}</Text>
         </View>
       </DrawerContentScrollView>
@@ -39,6 +54,17 @@ const styles = StyleSheet.create({
   },
   nameText: {
     color: colors.BLACK,
+  },
+  userImageContainer: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginBottom: 10,
+  },
+  userImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 35,
   },
 });
 

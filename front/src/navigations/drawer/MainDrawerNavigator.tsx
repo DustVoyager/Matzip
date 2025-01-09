@@ -51,8 +51,8 @@ function MainDrawerNavigator() {
     <Drawer.Navigator
       drawerContent={CustomDrawerContent}
       screenOptions={({route}) => ({
-        drawerType: 'front',
         headerShown: false,
+        drawerType: 'front',
         drawerStyle: {
           width: Dimensions.get('screen').width * 0.6,
           backgroundColor: colors.WHITE,
