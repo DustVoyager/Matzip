@@ -13,6 +13,7 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {MainDrawerParamList} from '@/navigations/drawer/MainDrawerNavigator';
 import useUserLocation from '@/hooks/useUserLocation';
 import usePermission from '@/hooks/userPermisson';
+import mapStyle from '@/style/mapStyle';
 
 type Naviation = CompositeNavigationProp<
   StackNavigationProp<MapStackParamList>,
@@ -49,6 +50,7 @@ function MapHomeScreen() {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
+        customMapStyle={mapStyle}
       />
       <Pressable
         style={[styles.drawerButton, {top: inset.top || 20}]}
