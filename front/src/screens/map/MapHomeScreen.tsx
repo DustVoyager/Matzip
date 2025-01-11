@@ -1,7 +1,7 @@
 import {colors} from '@/constans';
 import React, {useRef} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -50,8 +50,20 @@ function MapHomeScreen() {
         showsUserLocation
         followsUserLocation
         showsMyLocationButton={false}
-        customMapStyle={mapStyle}
-      />
+        customMapStyle={mapStyle}>
+        <Marker
+          coordinate={{
+            latitude: 37.5516032365118,
+            longitude: 126.98989626020192,
+          }}
+        />
+        <Marker
+          coordinate={{
+            latitude: 37.5616032365118,
+            longitude: 126.98989626020192,
+          }}
+        />
+      </MapView>
       <Pressable
         style={[styles.drawerButton, {top: inset.top || 20}]}
         onPress={() => navigation.openDrawer()}>
