@@ -11,8 +11,6 @@ function useUserLocation() {
   const [isUserLocationError, setIsUserLocationError] = useState(false);
   const {isComeback} = useAppState();
 
-  // console.log(isComeback, '-------');
-
   useEffect(() => {
     GeoLocation.getCurrentPosition(
       info => {
