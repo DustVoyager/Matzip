@@ -33,15 +33,13 @@ function DrawerIcons(route: RouteProp<MainDrawerParamList>, focused: boolean) {
       iconName = 'event-note';
       break;
     }
-    default:
-      break;
   }
 
   return (
     <MaterialIcons
       name={iconName}
-      size={18}
       color={focused ? colors.BLACK : colors.GRAY_500}
+      size={18}
     />
   );
 }
