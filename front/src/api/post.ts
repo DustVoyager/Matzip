@@ -1,4 +1,4 @@
-import {ImageUri, Post} from '@/types/domain';
+import {ImageUri, Post} from '@/types';
 import axiosInstance from './axios';
 
 type ResponsePost = Post & {images: ImageUri[]};
@@ -11,5 +11,13 @@ const createPost = async (body: RequestCreatePost): Promise<ResponsePost> => {
   return data;
 };
 
-export {createPost};
-export type {ResponsePost, RequestCreatePost};
+type ResponseSinglePost = ResponsePost & {isFavorite: boolean};
+
+const getPost = async (id: number): Promise<ResponseSinglePost> => {
+  const {data} = await axiosInstance.get(`/posts/${id}`);
+
+  return data;
+};
+
+export {createPost, getPost};
+export type {ResponsePost, RequestCreatePost, ResponseSinglePost};
