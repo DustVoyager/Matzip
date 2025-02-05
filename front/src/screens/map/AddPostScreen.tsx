@@ -59,7 +59,7 @@ function AddPostScreen({route}: AddPostScreenProps) {
             error={addPost.errors.description}
             touched={addPost.touched.description}
             multiline
-            returnKeyType="join"
+            returnKeyType="next"
             {...addPost.getTextInputProps('description')}
           />
         </View>
